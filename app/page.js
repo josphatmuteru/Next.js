@@ -1,5 +1,10 @@
+import Navigation from "@/app/_components/Navigation";
+
 import Link from "next/link";
-import Navigation from "./components/Navigation";
+
+export const metadata = {
+  title: "Welcome",
+};
 
 export default function Page() {
   return (

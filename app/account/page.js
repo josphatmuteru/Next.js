@@ -1,9 +1,12 @@
-import Navigation from "../components/Navigation";
+import Navigation from "@/app/_components/Navigation";
+
+export const metadata = {
+  title: "Account",
+};
 
 export default function Page() {
   return (
     <div>
-   
       <h1>Your account</h1>
     </div>
   );
