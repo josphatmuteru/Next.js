@@ -1,9 +1,4 @@
-import Navigation from "@/app/_components/Navigation";
 import CabinCard from "@/app/_components/CabinCard";
-
-export const metadata = {
-  title: "Cabins",
-};
 
 export default function Page() {
   // CHANGE

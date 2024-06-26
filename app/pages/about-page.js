@@ -1,13 +1,3 @@
-import Navigation from "@/app/_components/Navigation";
-import Image from "next/image";
-
-import about1 from "@/public/about-1.jpg";
-import about2 from "@/public/about-2.jpg";
-
-export const metadata = {
-  title: "Guest area",
-};
-
 export default function Page() {
   return (
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
@@ -39,20 +29,14 @@ export default function Page() {
       </div>
 
       <div className="col-span-2">
-        <Image
-          src={about1}
+        <img
+          src="/about-1.jpg"
           alt="Family sitting around a fire pit in front of cabin"
-          placeholder="blur"
         />
       </div>
 
-      <div className="col-span-2 relative aspect-square">
-        <Image
-          src="/about-2.jpg"
-          fill
-          className="object-cover"
-          alt="Family that manages The Wild Oasis"
-        />
+      <div className="col-span-2">
+        <img src="/about-2.jpg" alt="Family that manages The Wild Oasis" />
       </div>
 
       <div className="col-span-3">
