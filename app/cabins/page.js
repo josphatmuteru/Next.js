@@ -2,12 +2,14 @@ import Navigation from "@/app/_components/Navigation";
 import CabinList from "./cabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
 
 export const metadata = {
   title: "Cabins",
 };
 
-export default async function Page() {
+export default async function Page({ searchParams }) {
+  const filter = searchParams?.capacity ?? "all";
   // CHANGE
 
   return (
@@ -23,8 +25,11 @@ export default async function Page() {
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
       </p>
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
