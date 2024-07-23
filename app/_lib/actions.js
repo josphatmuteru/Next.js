@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 
@@ -19,7 +20,7 @@ export async function updateProfile(formData) {
   const { data, error } = await supabase
     .from("guests")
     .update(updateData)
-    .eq("id", 155)
+    .eq("id", session.user.guestId)
     .select()
     .single();
 
@@ -27,6 +28,8 @@ export async function updateProfile(formData) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
+
+  revalidatePath("/account/profile");
 }
 
 export async function signInAction() {

@@ -11,7 +11,7 @@ const authConfig = {
   ],
 
   callbacks: {
-    authorized({ auth, request }) {
+    authorize({ auth, request }) {
       return !!auth?.user;
     },
     async signIn({ user, account, profile }) {
@@ -26,14 +26,13 @@ const authConfig = {
         return false;
       }
     },
-  },
+    async session({ session, user }) {
+      const guest = await getGuest(session.user.email);
 
-  async session({ session, user }) {
-    const guest = await getGuest(session.user.email);
+      session.user.guestId = guest.id;
 
-    session.user.guestId = guest.id;
-
-    return session;
+      return session;
+    },
   },
 
   pages: {
