@@ -27,6 +27,8 @@ function DateSelector({ bookedDates, settings, cabin }) {
 
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
+  console.log(bookedDates);
+
   const { regularPrice, discount } = cabin;
   const numNights = differenceInDays(displayRange.to, displayRange.from);
 
@@ -50,9 +52,8 @@ function DateSelector({ bookedDates, settings, cabin }) {
         captionLayout="dropdown"
         numberOfMonths={2}
         disabled={(curDate) =>
-          isPast(
-            curDate || bookedDates.some((date) => isSameDay(date, curDate))
-          )
+          isPast(curDate) ||
+          bookedDates.some((date) => isSameDay(date, curDate))
         }
       />
 
